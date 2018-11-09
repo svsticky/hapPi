@@ -1,0 +1,6 @@
+---
+- name: "assert that public keys can be set"
+  assert:
+    that:
+      - 'templates/home/pi/.ssh/authorized_keys.j2' is file
+    fail_msg: "authorized_keys does not exist! Please run ./scripts/get-authorized-keys.sh."

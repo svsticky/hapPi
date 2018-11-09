@@ -1,0 +1,14 @@
+---
+- hosts: "all"
+  remote_user: "pi"
+  become: true
+  become_user: "root"
+  become_method: "sudo"
+  force_handlers: true
+
+  tasks:
+    - name: "perform configuration checks"
+      include_tasks: "tasks/preflight.yml"
+
+    - name: "start process of configuring SSH"
+      include_tasks: "tasks/sshd.yml"

@@ -1,0 +1,24 @@
+---
+- name: "ensure ~/.ssh exists"
+  file:
+    path: "/home/pi/.ssh"
+    state: "directory"
+    owner: "pi"
+    group: "pi"
+
+- name: "install authorized_keys"
+  template:
+    src: "templates/home/pi/.ssh/authorized_keys.j2"
+    dest: "/home/pi/.ssh/authorized_keys"
+    owner: "pi"
+    group: "pi"
+    mode: "0644"
+
+- name: "install modified sshd_config"
+  template:
+    src: "templates/etc/ssh/sshd_config.j2"
+    dest: "/etc/ssh/sshd_config"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+  notify: "reload sshd"
