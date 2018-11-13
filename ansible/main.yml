@@ -1,5 +1,7 @@
 ---
 - hosts: "all"
+  vars_files:
+    - "vars.yml"
   remote_user: "pi"
   become: true
   become_user: "root"
@@ -11,4 +13,7 @@
       include_tasks: "tasks/preflight.yml"
 
     - name: "start process of configuring SSH"
+      include_tasks: "tasks/sshd.yml"
+
+    - name: "perfom system configurations"
       include_tasks: "tasks/sshd.yml"
