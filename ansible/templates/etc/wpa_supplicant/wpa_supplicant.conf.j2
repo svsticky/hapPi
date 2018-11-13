@@ -1,9 +1,11 @@
-
+# {{ ansible_managed }}
 country=NL
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
 
+{% for network in wifi_networks %}
 network={
-    ssid="{{ wifi_ssid }}"
-    psk="{{ wifi_password }}"
+    ssid="{{ network.ssid }}"
+    psk="{{ network.password }}"
 }
+{% endfor %}

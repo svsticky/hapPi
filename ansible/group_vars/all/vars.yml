@@ -1,4 +1,9 @@
 ---
 pi_hostname: "radio"
-wifi_ssid: "Woestgaafsecure"
-wifi_password: "fantazero"
+
+wifi_networks:
+  - ssid: "Woestgaafsecure"
+    password: "fantazero"
+
+  - ssid: "Woestgaafsecure (5GHz)"
+    password: "fantazero"
