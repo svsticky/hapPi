@@ -1,0 +1,11 @@
+
+---
+- name: "install wpa_supplicant.conf"
+  template:
+    src: "templates{{ item }}.j2"
+    dest: "{{ item }}"
+    owner: "pi"
+    group: "pi"
+    mode: "0644"
+  with_items:
+    - "/etc/wpa_supplicant/wpa_supplicant.conf"
