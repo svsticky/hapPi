@@ -2,7 +2,7 @@
 ---
 - name: "install wpa_supplicant.conf"
   template:
-    src: "templates{{ item }}.j2"
+    src: "{{ item }}.j2"
     dest: "{{ item }}"
     owner: "pi"
     group: "pi"
