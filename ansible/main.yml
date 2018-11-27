@@ -12,3 +12,9 @@
 
     - name: "start process of configuring SSH"
       include_tasks: "tasks/sshd.yml"
+
+    - name: "perfom system configurations"
+      include_tasks: "tasks/sshd.yml"
+
+    - name: "configure WiFi settings"
+      include_tasks: "tasks/wifi.yml"

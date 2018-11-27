@@ -1,0 +1,7 @@
+---
+- hostname:
+    name: "{{ pi_hostname }}"
+
+- name: "set timezone"
+  timezone:
+    name: "Europe/Amsterdam"
