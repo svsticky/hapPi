@@ -12,6 +12,21 @@
       - "xdotool"
     state: "present"
 
+- name: "create xorg.conf.d"
+  file:
+    path: "/etc/X11/xorg.conf.d"
+    state: "directory"
+    owner: "root"
+    group: "root"
+
+- name: "disable DPMS"
+  template:
+    src: "etc/X11/xorg.conf.d/10-no-screensaver.conf.j2"
+    dest: "/etc/X11/xorg.conf.d/10-no-screensaver.conf"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+
 - name: "place custom LightDM config"
   template:
     src: "etc/lightdm/lightdm.conf.j2"
