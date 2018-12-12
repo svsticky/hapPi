@@ -1,5 +1,6 @@
 ---
 pi_hostname: "radio"
+url_to_show: "https://radio.svsticky.nl"
 
 wifi_networks:
   - ssid: "Woestgaafsecure"

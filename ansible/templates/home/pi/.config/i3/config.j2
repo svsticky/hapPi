@@ -1,0 +1,10 @@
+# i3 config file (v4)
+# {{ ansible_managed }}
+set $mod Mod4
+
+bindsym Control+Shift+C exec /usr/bin/systemctl poweroff
+for_window [class="Firefox"] fullscreen enable
+for_window [class="Navigator"] fullscreen enable
+for_window [class="urxvt"] fullscreen
+
+exec firefox -url "{{ url_to_show }}"

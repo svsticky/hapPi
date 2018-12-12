@@ -6,6 +6,9 @@
   become_method: "sudo"
   force_handlers: true
 
+  handlers:
+    - import_tasks: "handlers/main.yml"
+
   tasks:
     - name: "perform configuration checks"
       include_tasks: "tasks/preflight.yml"
@@ -18,3 +21,6 @@
 
     - name: "configure WiFi settings"
       include_tasks: "tasks/wifi.yml"
+
+    - name: "install graphical environment"
+      include_tasks: "tasks/graphical.yml"

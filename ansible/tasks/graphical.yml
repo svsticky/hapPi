@@ -1,0 +1,35 @@
+---
+- name: "install packages required for graphical environment"
+  apt:
+    name:
+      - "arandr"
+      - "firefox-esr"
+      - "i3"
+      - "lightdm"
+      - "mplayer"
+      - "rxvt-unicode"
+      - "x11-xserver-utils"
+      - "xdotool"
+    state: "present"
+
+- name: "place custom LightDM config"
+  template:
+    src: "etc/lightdm/lightdm.conf.j2"
+    dest: "/etc/lightdm/lightdm.conf"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+
+- name: "ensure i3 directory exists"
+  file:
+    path: "/home/pi/.config/i3"
+    state: "directory"
+    owner: "pi"
+    group: "pi"
+
+- name: "place i3 config"
+  template:
+    src: "home/pi/.config/i3/config.j2"
+    dest: "/home/pi/.config/i3/config"
+    owner: "pi"
+    group: "pi"
