@@ -7,3 +7,6 @@ wifi_networks:
 
   - ssid: "Woestgaafsecure (5GHz)"
     password: "fantazero"
+
+  - ssid: "Woestgaafsecure Gamehall"
+    password: "fantazero"
