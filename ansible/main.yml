@@ -14,7 +14,7 @@
       include_tasks: "tasks/sshd.yml"
 
     - name: "perfom system configurations"
-      include_tasks: "tasks/sshd.yml"
+      include_tasks: "tasks/system.yml"
 
     - name: "configure WiFi settings"
       include_tasks: "tasks/wifi.yml"

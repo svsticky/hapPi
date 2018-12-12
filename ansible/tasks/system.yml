@@ -5,3 +5,10 @@
 - name: "set timezone"
   timezone:
     name: "Europe/Amsterdam"
+
+- name: "place /etc/hosts"
+  template:
+    src: "etc/hosts.j2"
+    dest: "/etc/hosts"
+    owner: "root"
+    group: "root"
