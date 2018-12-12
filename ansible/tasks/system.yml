@@ -2,6 +2,11 @@
 - hostname:
     name: "{{ pi_hostname }}"
 
+- name: "place /boot/config.txt"
+  template:
+    src: "boot/config.txt.j2"
+    dest: "/boot/config.txt"
+
 - name: "set timezone"
   timezone:
     name: "Europe/Amsterdam"
