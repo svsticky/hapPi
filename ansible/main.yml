@@ -24,3 +24,6 @@
 
     - name: "install graphical environment"
       include_tasks: "tasks/graphical.yml"
+
+    - name: "configure unattended upgrades"
+      include_tasks: "tasks/security.yml"

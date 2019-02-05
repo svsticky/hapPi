@@ -1,0 +1,33 @@
+---
+# Needed because of Ansible issue #25414
+- name: "check if unattended-upgrades is not in progress"
+  shell:
+    "while fuser /var/lib/dpkg/lock; do sleep 1; done;"
+  become: true
+  changed_when: false
+
+- name: "install common utilities"
+  apt:
+    name:
+      - "aptitude"
+      - "htop"
+      - "unattended-upgrades"
+      - "haveged"
+    state: "present"
+
+- name: "update all packages"
+  apt:
+    upgrade: "yes"
+    update_cache: true
+    cache_valid_time: 100
+
+- name: "configure unattended-upgrades"
+  template:
+    src: "templates/{{ item }}.j2"
+    dest: "/{{ item }}"
+  with_items:
+    - "etc/apt/apt.conf.d/50unattended-upgrades"
+  notify:
+    - "systemctl daemon-reload"
+
+

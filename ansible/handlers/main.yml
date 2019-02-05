@@ -3,3 +3,7 @@
   service:
     name: "sshd"
     state: "reloaded"
+
+- name: "systemctl daemon-reload"
+  systemd:
+    daemon_reload: true
