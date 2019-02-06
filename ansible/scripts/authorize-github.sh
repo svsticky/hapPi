@@ -19,7 +19,7 @@ fi
 # Note that bash cannot return strings, and instead redirects the stdout of
 # commands called in the function to the caller.
 function get_without_otp() {
-  username = $1
+  username=$1
   curl                                                    \
     -u $username                                          \
     --data '{"scopes":["read:org"],"note":"hapPI token"}' \
@@ -44,7 +44,7 @@ read OTPCODE
 
 if [ -n $OTPCODE ]; then
   echo "Requesting token with OTP code."
-  HTTPRESULT=$(get_with_otp $USERNAME $OTPCODE)
+  HTTPRESULT=$(get_without_otp $USERNAME $OTPCODE)
 else
   echo "Requesting token without OTP code."
   HTTPRESULT=$(get_without_otp $USERNAME)
