@@ -1,0 +1,12 @@
+---
+- name: "install system management packages"
+  apt:
+    name:
+      - "aptitude"
+      - "tmux"
+    state: "present"
+
+- name: "update all packages"
+  apt:
+    update_cache: "yes"
+    upgrade: "full"
