@@ -3,6 +3,7 @@
   apt:
     name:
       - "arandr"
+      - "feh"
       - "firefox-esr"
       - "i3"
       - "lightdm"
@@ -11,6 +12,41 @@
       - "x11-xserver-utils"
       - "xdotool"
     state: "present"
+
+- name: "copy wallpapers"
+  copy:
+    src: "templates/home/pi/Wallpapers"
+    dest: "/home/pi"
+    owner: "pi"
+    group: "pi"
+
+- name: "install systemd directory"
+  file:
+    path: "/home/pi/.config/systemd/user"
+    state: "directory"
+    owner: "pi"
+    group: "pi"
+
+- name: "install wallpaper changer"
+  template:
+    src: "home/pi/.config/systemd/user/{{ item }}.j2"
+    dest: "/home/pi/.config/systemd/user/{{ item }}"
+    owner: "pi"
+    group: "pi"
+  loop:
+    - "set-wallpaper@.timer"
+    - "set-wallpaper@.service"
+
+  notify: "systemctl --user daemon-reload"
+
+- name: "enable wallpaper changer timer"
+  systemd:
+    scope: "user"
+    name: "set-wallpaper@error.timer"
+    enabled: "yes"
+    state: "started"
+
+  become_user: "pi"
 
 - name: "create xorg.conf.d"
   file:

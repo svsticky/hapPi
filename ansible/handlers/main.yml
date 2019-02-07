@@ -3,3 +3,9 @@
   service:
     name: "sshd"
     state: "reloaded"
+
+- name: "systemctl --user daemon-reload"
+  systemd:
+    scope: "user"
+    daemon_reload: true
+  become_user: "pi"

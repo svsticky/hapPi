@@ -1,0 +1,9 @@
+[Unit]
+Description=Set wallpaper
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/feh --no-fehbg --bg-max %h/Wallpapers/%i.png
+
+[Install]
+WantedBy=multi-user.target

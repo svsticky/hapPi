@@ -2,6 +2,8 @@
 # {{ ansible_managed }}
 set $mod Mod4
 
+exec --no-startup-id feh --bg-max /home/pi/Wallpapers/startup.png
+
 bindsym Control+Shift+C exec /usr/bin/systemctl poweroff
 for_window [class="Firefox"] fullscreen enable
 for_window [class="Navigator"] fullscreen enable

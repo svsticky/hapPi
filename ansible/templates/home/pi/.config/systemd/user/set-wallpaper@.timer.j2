@@ -1,0 +1,9 @@
+[Unit]
+Description=Set the wallpaper after one minute.
+
+[Timer]
+OnBootSec=60s
+Unit=set-wallpaper@%i.service
+
+[Install]
+WantedBy=timers.target
