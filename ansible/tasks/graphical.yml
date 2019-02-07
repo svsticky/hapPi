@@ -3,9 +3,11 @@
   apt:
     name:
       - "arandr"
+      - "cec-utils"
       - "feh"
       - "firefox-esr"
       - "i3"
+      - "libcec"
       - "lightdm"
       - "mplayer"
       - "rxvt-unicode"
