@@ -11,3 +11,7 @@ wifi_networks:
 
   - ssid: "Woestgaafsecure Gamehall"
     password: "fantazero"
+
+unattended_upgrades:
+  security: true
+  all: true

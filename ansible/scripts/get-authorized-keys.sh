@@ -39,6 +39,6 @@ for team in ${TEAMS[@]}; do
 done
 
 echo "Updating authorized-keys template."
-mv --backup=numbered .new-authorized-keys templates/home/pi/.ssh/authorized_keys.j2
+mv .new-authorized-keys templates/home/pi/.ssh/authorized_keys.j2
 
 echo "Done!"
