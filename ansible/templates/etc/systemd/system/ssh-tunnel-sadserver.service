@@ -1,0 +1,31 @@
+[Unit]
+Description=SSH tunnel to sadserver to establish reverse shell access
+
+Wants=network-online.target
+After=network-online.target
+
+StartLimitBurst=120
+StartLimitInterval=4500
+
+[Service]
+Type=simple
+
+# We disable StrictHostKeyChecking, because this runs non-interactively so we
+# can't inspect a host key anyway. This just makes it accept the first host key
+# it encounters for the host name, and uses that for verification from then on.
+ExecStart=/usr/bin/ssh \
+  -N \
+  -R 2222:localhost:22 \
+  -o StrictHostKeyChecking=no \
+  {{ sadserver_tunnel_user }}@{{ sadserver_hostname }}
+
+User=pi
+Group=pi
+
+Restart=always
+RestartSec=30
+# The retry logic basically does this:
+# If the target server is down, retry twice a minute for ~1 hour. If it's still down then, give up.
+
+[Install]
+WantedBy=multi-user.target

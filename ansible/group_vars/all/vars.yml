@@ -1,6 +1,10 @@
 ---
 pi_hostname: "radio"
-url_to_show: "https://radio.svsticky.nl"
+
+sadserver_hostname: "svsticky.nl"
+sadserver_tunnel_user: "radio-tunnel"
+
+url_to_show: "https://radio.{{ sadserver_hostname }}/"
 
 wifi_networks:
   - ssid: "Woestgaafsecure"
