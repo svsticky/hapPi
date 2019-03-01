@@ -1,0 +1,6 @@
+# { ansible_managed }
+# This sudoers extension allows the remote-trigger user to execute
+# /usr/local/bin/remote-trigger command as root, without password.
+
+Defaults env_keep += "SSH_ORIGINAL_COMMAND"
+remote-trigger ALL = NOPASSWD: /usr/local/bin/remote-trigger

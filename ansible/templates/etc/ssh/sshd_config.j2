@@ -87,3 +87,5 @@ Subsystem sftp /usr/lib/openssh/sftp-server
 # and ChallengeResponseAuthentication to 'no'.
 UsePAM yes
 
+Match User remote-trigger
+	ForceCommand sudo /usr/local/bin/remote-trigger

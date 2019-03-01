@@ -19,6 +19,8 @@
   apt:
     cache_valid_time: 3600
     upgrade: "full"
+  tags:
+    - "slow"
 
 - name: "install remote-trigger script"
   template:
@@ -27,3 +29,19 @@
     owner: "root"
     group: "root"
     mode: "0755"
+
+- name: "allow remote-trigger to sudo"
+  template:
+    src: "etc/sudoers.d/030_remote-trigger.j2"
+    dest: "/etc/sudoers.d/030_remote-trigger"
+    owner: "root"
+    group: "root"
+    mode: "0440"
+
+- name: "ensure remote-trigger user exists"
+  user:
+    name: "remote-trigger"
+    state: "present"
+    password_lock: "yes"
+    shell: "/bin/bash"
+

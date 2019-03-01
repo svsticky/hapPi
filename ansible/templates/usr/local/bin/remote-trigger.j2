@@ -9,14 +9,16 @@ if [[ "$USER" != "root" ]]; then
   exit 1
 fi
 
-case $1 in
+cmd=${SSH_ORIGINAL_COMMAND:-${1:-}}
+
+case $cmd in
 {% for command in remote_commands | dict2items %}
   {{ command.key }})
     {{ command.value }}
     ;;
 {% endfor %}
   *)
-    echo "Command not recognized. Known commands:"
+    echo "Command '$cmd' not recognized. Known commands:"
     echo "{{ remote_commands.keys() | join(', ') }}"
     exit 1
     ;;
