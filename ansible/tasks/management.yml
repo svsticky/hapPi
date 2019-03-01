@@ -3,8 +3,17 @@
   apt:
     name:
       - "aptitude"
+      - "git"
       - "tmux"
     state: "present"
+
+- name: "ensure persistent log directory exists"
+  file:
+    path: "/var/log/journal"
+    state: "directory"
+    owner: "root"
+    group: "root"
+    mode: "0755"
 
 - name: "update all packages"
   apt:
