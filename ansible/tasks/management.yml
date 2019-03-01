@@ -19,3 +19,11 @@
   apt:
     update_cache: "yes"
     upgrade: "full"
+
+- name: "install remote-trigger script"
+  template:
+    src: "usr/local/bin/remote-trigger.j2"
+    dest: "/usr/local/bin/remote-trigger"
+    owner: "root"
+    group: "root"
+    mode: "0755"

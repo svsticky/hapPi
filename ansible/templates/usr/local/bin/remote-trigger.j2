@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# {{ ansible_managed }}
+# Fixed entry point for triggering a command from an untrusted client
+
+set -euo pipefail
+
+if [[ "$USER" != "root" ]]; then
+  echo "This command requires root privileges."
+  exit 1
+fi
+
+case $1 in
+{% for command in remote_commands | dict2items %}
+  {{ command.key }})
+    {{ command.value }}
+    ;;
+{% endfor %}
+  *)
+    echo "Command not recognized. Known commands:"
+    echo "{{ remote_commands.keys() | join(', ') }}"
+    exit 1
+    ;;
+esac
+
+# vim: et sw=2 sts=2

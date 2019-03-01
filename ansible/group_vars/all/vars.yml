@@ -2,6 +2,11 @@
 pi_hostname: "radio"
 url_to_show: "https://radio.svsticky.nl"
 
+remote_commands:
+  reboot: "reboot"
+  shutdown: "poweroff"
+  foreground: "echo 'as' | cec-client --single-command"
+
 wifi_networks:
   - ssid: "Woestgaafsecure"
     password: "fantazero"
