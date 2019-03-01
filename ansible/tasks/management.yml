@@ -45,3 +45,18 @@
     password_lock: "yes"
     shell: "/bin/bash"
 
+- name: "ensure ~remote-trigger/.ssh exists"
+  file:
+    path: "/home/remote-trigger/.ssh"
+    state: "directory"
+    owner: "remote-trigger"
+    group: "remote-trigger"
+    mode: "0755"
+
+- name: "copy remote-trigger's authorized_keys"
+  template:
+    src: "home/remote-trigger/.ssh/authorized_keys.j2"
+    dest: "/home/remote-trigger/.ssh/authorized_keys"
+    owner: "remote-trigger"
+    group: "remote-trigger"
+    mode: "0644"
