@@ -43,6 +43,8 @@
 
   notify: "systemctl --user daemon-reload"
 
+- meta: "flush_handlers"
+
 - name: "enable wallpaper changer timer"
   systemd:
     scope: "user"
