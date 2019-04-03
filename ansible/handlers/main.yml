@@ -9,3 +9,7 @@
     scope: "user"
     daemon_reload: true
   become_user: "pi"
+
+- name: "systemctl daemon-reload"
+  systemd:
+    daemon_reload: true

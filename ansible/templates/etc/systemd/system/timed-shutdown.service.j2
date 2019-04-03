@@ -1,0 +1,7 @@
+[Unit]
+Description=Shutdown the system immediately
+Requires=play-sound@shutdown.service
+After=play-sound@shutdown.service
+
+[Service]
+ExecStart=/bin/systemctl poweroff

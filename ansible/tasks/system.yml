@@ -17,3 +17,28 @@
     dest: "/etc/hosts"
     owner: "root"
     group: "root"
+
+- name: "install systemd services and timer"
+  template:
+    src: "etc/systemd/system/{{ item }}.j2"
+    dest: "/etc/systemd/system/{{ item }}"
+    owner: "root"
+    group: "root"
+
+  with_items:
+    - "timed-shutdown.service"
+    - "timed-shutdown.timer"
+    - "play-sound@.service"
+    - "bier-uur.timer"
+  notify: "systemctl daemon-reload"
+
+- meta: "flush_handlers"
+
+- name: "enable startup notification"
+  systemd:
+    name: "{{ item }}"
+    enabled: "yes"
+
+  with_items:
+    - "bier-uur.timer"
+    - "timed-shutdown.timer"

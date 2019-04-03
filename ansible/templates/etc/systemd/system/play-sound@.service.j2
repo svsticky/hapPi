@@ -1,0 +1,9 @@
+[Unit]
+Description=Play sound from /home/pi/Sounds
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/aplay -A 10 /home/pi/Sounds/%i.wav
+
+[Install]
+WantedBy=multi-user.target
