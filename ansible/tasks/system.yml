@@ -28,6 +28,10 @@
   with_items:
     - "play-sound@.service"
     - "bier-uur.timer"
+    - "tv-off.service"
+    - "tv-off.timer"
+    - "tv-on.service"
+    - "tv-on.timer"
   notify: "systemctl daemon-reload"
 
 - meta: "flush_handlers"
@@ -39,16 +43,6 @@
 
   with_items:
     - "bier-uur.timer"
-
-- name: "remove timed-shutdown"
-  file:
-    path: "/etc/systemd/system/{{ item }}"
-    state: "absent"
-
-  with_items:
-    - "timed-shutdown.timer"
-    - "timed-shutdown.service"
-
-  notify: "systemctl daemon-reload"
-
-
+    - "tv-on.service"
+    - "tv-on.timer"
+    - "tv-off.timer"

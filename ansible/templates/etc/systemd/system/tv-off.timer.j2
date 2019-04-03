@@ -1,0 +1,9 @@
+# {{ ansible_managed }}
+[Unit]
+Description=Turn the TV off at 23:00.
+
+[Timer]
+OnCalendar=23:00:00
+
+[Install]
+WantedBy=timers.target

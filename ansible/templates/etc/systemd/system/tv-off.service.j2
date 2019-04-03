@@ -1,0 +1,9 @@
+[Unit]
+Description=Turn the TV off via CEC
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/remote-trigger tv_off
+
+[Install]
+WantedBy=multi-user.target

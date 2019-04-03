@@ -6,6 +6,8 @@ remote_commands:
   reboot: "reboot"
   shutdown: "poweroff"
   foreground: "echo 'as' | cec-client --single-command"
+  tv_off: "echo 'standby 0' | cec-client --single-command"
+  tv_on: "echo 'on 0' | cec-client --single-command"
 
 wifi_networks:
   - ssid: "Woestgaafsecure"
