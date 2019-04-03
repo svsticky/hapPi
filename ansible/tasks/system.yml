@@ -40,13 +40,15 @@
   with_items:
     - "bier-uur.timer"
 
-- name: "disable services to remove"
-  systemd:
-    name: "{{ item }}"
-    enabled: "no"
-    state: "stopped"
+- name: "remove timed-shutdown"
+  file:
+    path: "/etc/systemd/system/{{ item }}"
+    state: "absent"
 
   with_items:
     - "timed-shutdown.timer"
     - "timed-shutdown.service"
+
+  notify: "systemctl daemon-reload"
+
 
