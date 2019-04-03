@@ -26,8 +26,6 @@
     group: "root"
 
   with_items:
-    - "timed-shutdown.service"
-    - "timed-shutdown.timer"
     - "play-sound@.service"
     - "bier-uur.timer"
   notify: "systemctl daemon-reload"
@@ -41,4 +39,14 @@
 
   with_items:
     - "bier-uur.timer"
+
+- name: "disable services to remove"
+  systemd:
+    name: "{{ item }}"
+    enabled: "no"
+    state: "stopped"
+
+  with_items:
     - "timed-shutdown.timer"
+    - "timed-shutdown.service"
+
