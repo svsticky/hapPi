@@ -4,6 +4,7 @@ Description=Turn the TV on via CEC
 [Service]
 Type=oneshot
 ExecStart=/usr/local/bin/remote-trigger tv_on
+Environment=USER=root
 
 [Install]
 WantedBy=multi-user.target
