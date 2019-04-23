@@ -1,7 +1,7 @@
 ---
 - name: "reload sshd"
   service:
-    name: "sshd"
+    name: "ssh"
     state: "reloaded"
 
 - name: "systemctl --user daemon-reload"
