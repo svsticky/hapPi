@@ -38,4 +38,4 @@ Port 2200
 ProxyJump gemini.science.uu.nl
 ```
 
-`ssh -p 2200 pi@stickykamer.mynetgear.com`
+`ssh -p 2200 pi@tunnel-radio`
